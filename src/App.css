@@ -1,12 +1,13 @@
 .App {
   text-align: center;
 }
+
 Nav{
 display: flex;
 justify-content: space-around;
 align-items: center;
 min-height: 10vh;
-background: lightskyblue;
+background: rgb(74, 77, 78);
 color: white;
 }
 
