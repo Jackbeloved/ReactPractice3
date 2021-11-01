@@ -24,7 +24,7 @@ function Shop() {
           <Link to={`/shop/${data.itemId}`}>{data.item.name}</Link>
         </h1>
 
-      ))};
+      ))}
 
     </div>
   );

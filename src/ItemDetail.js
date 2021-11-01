@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-function ItemDetail({match}) {
+function ItemDetail({ match }) {
+    
 
     useEffect(() => {
         fetchItem();
@@ -9,20 +10,32 @@ function ItemDetail({match}) {
 
     }, []);
 
-    const [item, setItem] = useState([]);
-const fetchItem = async () =>{
-    const fetchItem = await fetch(
-        `https://fortnite-api.theapinetwork.com/item/get?id=${match.params.id}`
+    const [itemData, setItemData] = useState({
+        ratings: {},
+        images: {},
+    });
+    const fetchItem = async () => {
+        const fetchItem = await fetch(
+            `https://fortnite-api.theapinetwork.com/item/get?id=${match.params.id}`
         );
-    const item = await fetchItem.json();
-    setItem(item);
-    console.log(item);
-};
+        // console.log(match.params.id);
+        const itemss = await fetchItem.json();
+        setItemData(itemss.data.item);
+
+        // console.log(item.data.item.name);
+    };
+
 
     return (
         <div>
 
-            <h1>{item.name}</h1>
+            <h1>{itemData.name}</h1>
+            {/* {console.log('====='+item.name)} */}
+            {console.log(itemData)}
+            <img src={itemData.images.icon} alt="" />
+            {itemData.rarity}
+            {itemData.ratings.avgStars}
+            {/* {item.images.icon} */}
 
         </div>
     );
